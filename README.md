@@ -32,5 +32,8 @@ It was inspired by [Airbnb's guide](https://github.com/airbnb/ruby), [GitHub's g
   1. [Be Consistent](./ruby.md#be-consistent)
 
 ## Rails Table of Contents
-  1. [Returns on Renders](./rails.md#returns-on-renders)
-  1. [Scopes](./rails.md#scopes)
+  1. [Models](./rails.md#models)
+    1. [Callbacks](./rails.md#callbacks)
+    1. [Scopes](./rails.md#scopes)
+  1. [Controllers](./rails.md#controllers)
+    1. [Returns on Renders](./rails.md#returns-on-renders)

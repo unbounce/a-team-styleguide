@@ -4,8 +4,9 @@
 
   1. [Models](#models)
     1. [Callbacks](#callbacks)
-  1. [Returns on Renders](#returns-on-renders)
-  1. [Scopes](#scopes)
+    1. [Scopes](#scopes)
+  1. [Controllers](#controllers)
+    1. [Returns on Renders](#returns-on-renders)
 
 
 ## Models
@@ -25,7 +26,22 @@
     end
     ```
 
-## Returns on Renders
+### Scopes
+* <a name="scope-lambda"></a>When defining ActiveRecord model scopes, wrap the
+    relation in a `lambda`.  A naked relation forces a database connection to be
+    established at class load time (instance startup).
+    <sup>[[link](#scope-lambda)]</sup>
+
+    ```ruby
+    # bad
+    scope :foo, where(:bar => 1)
+
+    # good
+    scope :foo, -> { where(:bar => 1) }
+    ```
+
+## Controllers
+### Returns on Renders
 * <a name="next-line-return"></a>When immediately returning after calling
     `render` or `redirect_to`, put `return` on the next line, not the same line.
     <sup>[[link](#next-line-return)]</sup>
@@ -46,18 +62,4 @@
       render :text => 'Howdy'
       return
     end
-    ```
-
-## Scopes
-* <a name="scope-lambda"></a>When defining ActiveRecord model scopes, wrap the
-    relation in a `lambda`.  A naked relation forces a database connection to be
-    established at class load time (instance startup).
-    <sup>[[link](#scope-lambda)]</sup>
-
-    ```ruby
-    # bad
-    scope :foo, where(:bar => 1)
-
-    # good
-    scope :foo, -> { where(:bar => 1) }
     ```
