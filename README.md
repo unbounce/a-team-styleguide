@@ -1338,7 +1338,8 @@ In either case:
     end
     ```
 
-* <a name="dont-rescue-exception"></a>Avoid rescuing the `Exception` class.
+* <a name="dont-rescue-exception"></a>Avoid rescuing the `Exception` class. When applicable,
+    rescue the errors you throw rather than being too general of the rescued class.
     <sup>[[link](#dont-rescue-exception)]</sup>
 
     ```ruby
@@ -1360,6 +1361,13 @@ In either case:
     begin
       # an exception occurs here
     rescue
+      # exception handling
+    end
+
+    # best
+    begin
+      # an exception occurs here
+    rescue MyCustomException
       # exception handling
     end
     ```
