@@ -2,8 +2,28 @@
 
 ## Table of Contents
 
+  1. [Models](#models)
+    1. [Callbacks](#callbacks)
   1. [Returns on Renders](#returns-on-renders)
   1. [Scopes](#scopes)
+
+
+## Models
+### Callbacks
+* <a name="callbacks"></a>Only use callbacks that touches the model layer
+    ([rationale](./rationales.md/#callbacks))
+    <sup>[[link](#callbacks)]</sup>
+    ```ruby
+    # bad
+    class Newsletter
+      after_create :send_email_to_subscribers
+    end
+
+    # good
+    class Person
+      after_create :create_address!
+    end
+    ```
 
 ## Returns on Renders
 * <a name="next-line-return"></a>When immediately returning after calling

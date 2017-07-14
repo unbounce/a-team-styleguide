@@ -6,6 +6,7 @@ for the decisions made in the main [Style guide](./README.md).
 ## Table of Contents
   1.  [Private Method Indentation](#private-method-indentation)
   1.  [Line Length](#line-length)
+  1.  [Callbacks](#callbacks)
 
 ### Private Method Indentation
 
@@ -103,3 +104,60 @@ end
   <% end %>
 <% end %>
 ```
+
+### Callbacks
+
+Using callbacks tend to make the test slower. This is usually a bad practice when it
+does something other than touch the model layer. This includes creating necessary associations and
+also updating values to its own. Having a callback that affects other models will
+result to a test that will be hard to write since it would be necessary to create the other models.
+
+```ruby
+# bad example
+class User < ActiveRecord::Base
+  has_one :address
+
+  after_save :ensure_correct_address!
+
+  private
+  def ensure_correct_address!
+    ...
+  end
+end
+
+class Address < ActiveRecord::Base
+end
+```
+
+Testing this, would require both instances to be present.
+
+```ruby
+# good example
+class User < ActiveRecord::Base
+  after_create :create_address!
+end
+
+class Address < ActiveRecord::Base
+end
+```
+
+With this example, a user always has an address. Having a callback in this case makes
+sense since this ensures consistency in our data.
+
+Another case where a callback can be harmful is when it sends out data that would be
+required to be stubbed in tests.
+
+```
+# bad example
+class User < ActiveRecord::Base
+  after_create :create_s3_bucket!
+
+  private
+  def create_s3_bucket!
+    ...
+  end
+end
+```
+
+All the tests should fail in this case because it is calling out to an outside service. The `User`
+should not care if it has an `s3` bucket or not since it is outside of its domain.
