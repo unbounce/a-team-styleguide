@@ -34,7 +34,6 @@ It was inspired by [Airbnb's guide](https://github.com/airbnb/ruby) [GitHub's gu
   1. [Rails](#rails)
     1. [Scopes](#scopes)
   1. [Be Consistent](#be-consistent)
-  1. [Translation](#translation)
 
 ## Whitespace
 
@@ -1775,9 +1774,3 @@ In either case:
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
 [ruby-freeze]: http://blog.honeybadger.io/when-to-use-freeze-and-frozen-in-ruby/
 [avoid-else-return-early]: http://blog.timoxley.com/post/47041269194/avoid-else-return-early
-
-## Translation
-
-  This style guide is also available in other languages:
-
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [1c7/ruby-airbnb](https://github.com/1c7/ruby-airbnb)
