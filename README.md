@@ -121,6 +121,28 @@ It was inspired by [Airbnb's guide](https://github.com/airbnb/ruby) [GitHub's gu
         program_not_expired
     end
     ```
+* <a name="private-method-indentation"></a>Don't indent private methods
+    ([rationale](./rationales.md#private-method-indentation))
+    <sup>[[link](#private-method-indentation)]</sup>
+
+
+    ```ruby
+    # bad
+    class Foo
+      private
+
+        def bar
+        end
+    end
+
+    # good
+    class Foo
+      private
+
+      def bar
+      end
+    end
+    ```
 
 ### Inline
 

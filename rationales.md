@@ -4,7 +4,29 @@ This document contains what are at times lengthy rationales and justifications
 for the decisions made in the main [Style guide](./README.md).
 
 ## Table of Contents
+  1.  [Private Method Indentation](#private-method-indentation)
   1.  [Line Length](#line-length)
+
+### Private Method Indentation
+
+Having more indentation on private methods does not improve the overall readability of the file.
+```
+class Foo
+
+  class NestedClass
+    def nested_method
+    end
+  end
+
+  ...
+  private
+    def bar
+    end
+end
+```
+
+When a nested class is present, the public methods of that nested class has the same indentation
+as the private method which can be confusing.
 
 ### Line Length
 
